@@ -8,11 +8,8 @@ public:
         
         for( int i = 0 ;i < size ; i++){
             
-            if( prices[i] < min_price ){
-                min_price = prices[i];
-            }else if( prices[i] - min_price > max_profit ){
-                max_profit = prices[i] - min_price;                
-            }
+            min_price = min(prices[i],min_price);
+            max_profit = max(max_profit,prices[i]-min_price);
             
         } 
         
