@@ -2,26 +2,36 @@ class Solution {
 public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
         
-        sort( nums1.begin() , nums1.end() );
-        sort( nums2.begin() , nums2.end() );
+        // APPROACH 1 would be to sort the 2 arrays
+        // use 2 pointers to iterate the arrays and push the value when it is equal in both arrays
+        // 6 ms     10.1 MB
         
-        int i = nums1.size()-1;
-        int j = nums2.size()-1;
+        // APPROACH 2   would be using a unordered hash map to store values and frequency of elements from 1 array 
+        // and then search for the elements of array 2 in the hash map and if 
+        // its frequency is more than one add it to the solution vector
+        
+        int i = nums1.size();
+        int j = nums2.size();
         
         vector<int> ans;
+        unordered_map<int,int> umap;
         
-        while(i >= 0 && j >= 0 ){
+        for( int x = 0 ; x < i ; x++){
             
-            if( nums1[i] == nums2[j] ){
-                ans.push_back(nums1[i]);
-                i--;j--;
-            }else if (nums1[i] > nums2[j]){
-                i--;
-            }else{
-                j--;
+            umap[nums1[x]]++;
+            
+        }
+        
+        for( int y = 0 ; y < j ; y++){
+            
+            if( umap[nums2[y]] > 0){
+                umap[nums2[y]]--;
+                ans.push_back(nums2[y]);
             }
             
         }
+        
+        
         
         return ans;
     }
