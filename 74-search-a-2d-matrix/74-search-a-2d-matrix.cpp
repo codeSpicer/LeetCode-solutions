@@ -40,7 +40,7 @@ public:
     }
 
     // when above loop ends, search in row[high]
-    int row = high;
+    int row = high;     // high because when ( low == high) that means we have come one step forward and we need to check in previous row
     if (row >= 0)
     {
         low = 0;
