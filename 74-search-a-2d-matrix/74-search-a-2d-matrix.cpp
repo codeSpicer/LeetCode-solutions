@@ -15,14 +15,14 @@ public:
         
     if (matrix.size() == 0 || matrix[0].size() == 0)
     {
-        return false;
+        return false;       // not valid matrix
     }
 
-    int low;
-    int high;
+    int low=0;
+    int high= matrix.size()-1;
 
     // first search in first column, use binary search
-    for (low = 0, high = matrix.size() - 1; low <= high;)
+    while(low <= high)
     {
         int middle = (low + high) / 2;
         if (matrix[middle][0] < target)
@@ -43,7 +43,10 @@ public:
     int row = high;
     if (row >= 0)
     {
-        for (low = 0, high = matrix[row].size() - 1; low <= high;)
+        low = 0;
+        high = matrix[row].size() - 1;
+        
+        while (low <= high)
         {
             int middle = (low + high) / 2;
             if (matrix[row][middle] < target)
