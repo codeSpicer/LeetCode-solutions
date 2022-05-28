@@ -5,7 +5,8 @@ public:
         // general idea add everyting in a onordered map 
         // then loop the array to find first element with freq 1
         // return it
-        // time complexity O(n) space complexi o(n)
+        // time complexity O(n) space complexi o(1) because there are only 26 characters
+        
         
         unordered_map<int,int> mp ;
         
