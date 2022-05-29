@@ -12,6 +12,7 @@ class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         
+        // checks to see if any list is empty
         if( !list1 && !list2){
             return NULL;
         }else if( !list1){
@@ -24,18 +25,19 @@ public:
         ListNode* ptr1 = list1;
         ListNode* ptr2 = list2;
         ListNode* ans;
-        ListNode* placeholder;
+        ListNode* placeholder;      // node which we return
         
-        if( ptr1->val <= ptr2->val){
+        if( ptr1->val <= ptr2->val){    // choosing the head node by comparing the elements of 2 lists
             ans = ptr1;
             ptr1 = ptr1->next;
         }else{
             ans = ptr2;
             ptr2 = ptr2->next;
         }
-        placeholder = ans;
+        placeholder = ans;              // storing the pos. of head node
         
-        while( ptr1 && ptr2){
+        while( ptr1 && ptr2){           // while any one list has not ended we go on comparing
+                                        // the elements and attaching them to the end of the list 
             
             if( ptr1->val <= ptr2->val ){
                 ans->next = ptr1;
@@ -48,16 +50,14 @@ public:
             }
             
         }
+    
+        // once any of the 2 lists finish we just attach the other list to the end of out answer list
         
-        while( ptr1 ){
+        if( ptr1){
             ans->next = ptr1;
-            ptr1 = ptr1->next;
-            ans = ans->next;
-        }        
-        while( ptr2 ){
+        }
+        if( ptr2){
             ans->next = ptr2;
-            ptr2 = ptr2->next;
-            ans = ans->next;
         }
         
         return placeholder;
