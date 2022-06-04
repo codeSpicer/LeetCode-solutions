@@ -21,15 +21,12 @@ public:
             return root;
         }
         
-        TreeNode* left =  searchBST( root->left , val);
-        TreeNode* right = searchBST(root->right , val);
+        if( root->val > val){
+            return searchBST( root->left , val);
+        }else{
+            return searchBST(root->right , val);
+        }
         
-        if(left){
-            return left;
-        }
-        if(right){
-            return right;
-        }
         return NULL;
         
     }
