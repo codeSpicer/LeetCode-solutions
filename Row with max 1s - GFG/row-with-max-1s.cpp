@@ -7,20 +7,15 @@ using namespace std;
 class Solution{
 public:
 	int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
-	    int count = 0, max_count = 0, row=-1;
-        for(int i = 0 ; i < n ;i++ ){
-            count =0;
-            for ( int j = 0; j < m ; j++ ){
+	    int count = 0, max_count = 0, row;
+        for(int j =0; j< m ;j++){
+            for(int i=0;i<n;i++){
                 if(arr[i][j]==1){
-                    count++;
-                }
-                if(max_count<count){
-                    max_count = count;
-                    row = i;
+                    return i;
                 }
             }
         }
-        return row;
+        return -1;
 	}
 
 };
