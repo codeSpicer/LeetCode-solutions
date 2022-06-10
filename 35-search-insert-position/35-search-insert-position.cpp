@@ -19,12 +19,12 @@ public:
             
             int mid = i + ( j-i )/2;
             
-            if( nums[mid] == target){
-                return mid;
-            }else if ( nums[mid] < target){
+            if ( nums[mid] < target){
                 i = mid+1;
-            }else{
+            }else if( nums[mid] > target){
                 j = mid-1;
+            }else{
+                return mid;
             }
         }
         return i;
