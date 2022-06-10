@@ -5,18 +5,15 @@ public:
         int l = 0;
         int r = arr.size()-1;
         
-        while( l <= r){
+        while( l < r){      // we use  l<r when set l or r to mid to prevent infinite loop
             
             int mid = l+ (r-l)/2;
             
-            if( mid>0 && arr[mid-1] > arr[mid]){
-                r = mid-1;
-            }else if( mid<arr.size() && arr[mid+1] > arr[mid] ){
+            if(  arr[mid+1] > arr[mid]){
                 l = mid+1;
-            }else{
-                return mid;
+            }else {
+                r = mid;
             }
-            
         }
         return l;
         
