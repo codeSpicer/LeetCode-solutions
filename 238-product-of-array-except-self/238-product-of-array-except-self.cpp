@@ -5,28 +5,26 @@ public:
         // so we calculate multiplicative prefix and suffix of an array and then 
         // we multiply those 2 to find the product of numbers except current number
         
+        // to solve it in o(1) space excluding result array
+        // we can store the result of prefix or suffix in output array first
+        // then we can use a variable and iterate from opposite side to update the array
+        
         int n = nums.size();
         vector<int> result(n);
         
-        vector<int> pre(n) ;
-        pre[0]=1;
-        vector<int> post(n);
-        post[n-1]=1;
+        result[0] = 1;
         
         for( int i = 1 ; i < n ; i++){
-            pre[i] = pre[i-1]* nums[i-1];
+            result[i] = result[i-1]* nums[i-1];       // stores product of left elements first
         }
+        
+        int prod = 1;       // continuously updates and stores product of right elements
         
         for( int i = n-2 ; i >=0; i--){
-            post[i] = post[i+1]*nums[i+1];
+            prod *= nums[i+1];
+            result[i]*= prod;
         }
         
-        result[0]= post[0];
-        result[n-1]= pre[n-1];
-        
-        for( int i = 1; i < n-1 ; i++){
-            result[i] = pre[i]* post[i];
-        }
         
         return result;
         
