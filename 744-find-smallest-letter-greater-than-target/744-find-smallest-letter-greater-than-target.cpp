@@ -2,26 +2,30 @@ class Solution {
 public:
     char nextGreatestLetter(vector<char>& letters, char target) {
         
-        int n = letters.size()-1;
+        int right = letters.size()-1;
         
-        if( letters[n] <= target){
+        if( target >= letters[right]){
             return letters[0];
         }
         
-        int i = 0;
+        // idea is to use binary search and move towards the right 
+        // of target element for test cases like [ a a a a a a b c]
         
-        while( i < n ){
+        int left=0;
+        
+        while ( left <= right){
             
-            int mid = (i+n)/2;
+            int mid = (left + right)/2;
             
-            if( target < letters[mid]){
-                n= mid;
+            if( letters[mid] <= target){
+                left = mid+1;
             }else{
-                i = mid+1;
+                right = mid-1;
             }
+            
         }
         
-        return letters[i];
+        return letters[left];
         
     }
 };
