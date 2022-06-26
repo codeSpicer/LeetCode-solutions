@@ -22,7 +22,7 @@ public:
             
             if( coins > n){
                 high = mid-1;
-            }else{
+            }else if( coins < n ){
                 low = mid+1;
             }
             
