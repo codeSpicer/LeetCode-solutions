@@ -2,22 +2,32 @@ class Solution {
 public:
     int arrangeCoins(int n) {
         
-        int i = 0;
-        int coinsInLvl= 1;
+    // this can be done in logn time using binary search 
+        // using a formula used to calculate sum of natural numbers
+    // n would be equal to rows in this case n(n+1)/2
         
-        while( true){
+        int low = 1; 
+        int high = n;
+        int ans =0;
+        
+        while( low <= high){
             
-            n -= coinsInLvl;
-            if( n >= 0 ){
-                coinsInLvl++;
-                i++;
+            long long mid = low + ( high - low)/2;
+            
+            long long coins = mid* ( mid +1 )/2;
+            
+            if( n == coins){
+                return mid;
+            }
+            
+            if( coins > n){
+                high = mid-1;
             }else{
-                return i;
-                break;
+                low = mid+1;
             }
             
         }
-        return 0;
-        
+       
+        return high;
     }
 };
