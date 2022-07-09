@@ -2,10 +2,15 @@ class Solution {
 public:
     void sortColors(vector<int>& nums) {
         
-        // one approach would be to use count sort but 2 pass
         
-        // for 1 pass we make 3 pointers low mid high
-        // low mid will be at index 0 and high at n.size
+        // idea is to use dnf sorting 
+        // we make 3 pointers low mid and high
+        // 0-low we have 0
+        // low to mid we have 1 
+        // mid to high we have 2
+        
+        // low and mid start from 0 , high starts from end of array
+        // we iterate mid and high 
         
         int low = 0;
         int mid = 0;
