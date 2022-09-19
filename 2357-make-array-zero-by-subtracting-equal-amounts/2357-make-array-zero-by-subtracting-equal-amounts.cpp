@@ -1,13 +1,17 @@
 class Solution {
 public:
-        int minimumOperations(vector<int>& A) {
-        unordered_set<int> s(A.begin(), A.end());
+    bool containsDuplicate(vector<int>& nums) {
+        unordered_set <int> numbers ;
         
-        for( auto i : s){
-            cout<< i <<" ";
-        }
-        
-        return s.size() - s.count(0) ;
+        for( int i = 0 ;i < nums.size() ; i++){
             
+            if( numbers.find(nums[i]) == numbers.end()){
+                numbers.insert( nums[i]);
+            }else{
+                return 1;
+            }
+            
+        }
+        return 0;
     }
 };
