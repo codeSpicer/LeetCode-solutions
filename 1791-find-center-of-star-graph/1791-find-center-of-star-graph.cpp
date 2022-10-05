@@ -11,11 +11,9 @@ public:
         
         if( m[edges[0][0]] == 2){
             return edges[0][0];
-        }else if(m[edges[0][1]] == 2){
-            return edges[0][1];
         }
         
-        return 0;
+        return edges[0][1];
         
     }
 };
