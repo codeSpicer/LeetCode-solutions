@@ -40,10 +40,11 @@ public:
                 TreeNode* r = new TreeNode( val);
                 r->right = root->right;
                 root->right = r;
-        }
-        
-        dfs(root->left , val , depth -1);
-        dfs(root->right , val , depth -1);
+        }else{
+            
+            dfs(root->left , val , depth -1);
+            dfs(root->right , val , depth -1);
+        }     
 
         
     }
