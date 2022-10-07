@@ -8,8 +8,8 @@ public:
         mp[start]++;
         mp[end]--;
         
-        for (auto& [_, delta] : mp) {
-            cur += delta;
+        for (auto& [ first , second] : mp) {
+            cur += second;
             res = max(res, cur);
         }
         return res;
