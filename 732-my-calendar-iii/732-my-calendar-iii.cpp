@@ -1,7 +1,13 @@
 class MyCalendarThree {
 public:
     map<int,int> mp;
-    MyCalendarThree() {}
+    MyCalendarThree() {
+        
+        // idea is to use an ordered map to store start and end points of intervals
+        // we add 1 to start points and substract 1 from end points
+        // then interate the map from start to end and sum the values of all the point to find max 
+        
+    }
     
     int book(int start, int end) {
         int cur = 0, res = 0;
