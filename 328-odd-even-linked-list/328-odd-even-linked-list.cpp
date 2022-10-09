@@ -14,7 +14,6 @@ public:
         
         if( !head ){ return NULL;}
         
-        ListNode* res = head;
         ListNode* odd = head;
         ListNode* oddPrev;
         ListNode* even = head->next;
@@ -30,7 +29,7 @@ public:
 //             even->next = even->next->next;
 //             even = even->next;
 //         }
-        while( odd && odd->next && even && even->next ){                   // to keep in mind odd and even should be moved forward together else the links will be broken for the other to traverse
+        while(  even && even->next ){                   // to keep in mind odd and even should be moved forward together else the links will be broken for the other to traverse
             odd->next = odd->next->next;
             even->next = even->next->next;
             oddPrev = odd;
@@ -44,11 +43,12 @@ public:
             oddPrev->next = evenHead;
         }
         
-        return res;
+        return head;
         
         
     }
 };
+
 
 // []
 // [1]
@@ -56,3 +56,4 @@ public:
 // [1,2,3]
 // [1,2,3,4]
 // [1,2,3,4,5]
+// [1,2,3,4,5,6]
