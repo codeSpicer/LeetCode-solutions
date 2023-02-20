@@ -26,12 +26,12 @@ public:
         if(arr[i] + sum < target)
         {
             // we make two output vector, one for calling function at same index and anthor for calling function frm next index. Because for every element we have unlimited choices, that it will contribute in making our sum any number of times.
-            vector<int> op1 = op;
-            vector<int> op2 = op;
+           
             
-            op2.push_back(arr[i]);
-            solve(arr, i, sum + arr[i], op2);
-            solve(arr, i + 1, sum, op1);
+            op.push_back(arr[i]);
+            solve(arr, i, sum + arr[i], op);
+            op.pop_back();
+            solve(arr, i + 1, sum, op);
         }
         else
         {
