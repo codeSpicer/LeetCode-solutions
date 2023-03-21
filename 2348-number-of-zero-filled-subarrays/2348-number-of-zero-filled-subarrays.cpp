@@ -6,6 +6,8 @@ public:
         
         long long result = 0;
         
+        // number of sub arrays in a array is  -> (n * (n+1)) / 2 
+        
         for( const auto &i : nums){
             if( i == 0 ){
                 count++;
