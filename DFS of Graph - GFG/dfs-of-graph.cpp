@@ -18,12 +18,12 @@ class Solution {
     
     void dfs( vector<int> adj[] , vector<bool> &visited , vector<int> &result , int cur){
         
-        if( !visited[cur] ){
-            visited[cur] = true;
-            result.push_back( cur);
-        }else{
+        if( visited[cur] ){
             return;
         }
+        
+        visited[cur] = true;
+        result.push_back( cur);
         
         for( auto neighbour : adj[cur]){
             dfs( adj , visited , result , neighbour);
