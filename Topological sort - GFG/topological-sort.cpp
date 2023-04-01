@@ -18,13 +18,16 @@ class Solution
         
         res.push_back( node);
         
-    }    
+    }   
+    
+    
+    
     
 	public:
 	//Function to return list containing vertices in Topological order. 
 	vector<int> topoSort(int V, vector<int> adj[]) 
 	{
-	    // code here
+	    /*
 	    vector<bool> visited( V , false);
 	    vector<int> res;
 	    
@@ -35,6 +38,41 @@ class Solution
 	    }
 	    reverse( res.begin() , res.end());
 	    return res;
+	    */
+	    
+	    // khans algorithm
+	    
+	    vector<int> inDegree( V , 0);   // in degree of every node
+	    queue<int> q;
+	    vector<int> result;
+	    
+	    for( int i = 0 ; i < V ; i++){
+	        for( auto x : adj[i]){
+	            inDegree[x]++;
+	        }
+	    }
+	    
+	    for( int i = 0 ; i < V ; i++){
+	        if( inDegree[i] == 0){
+	            q.push(i);
+	        }
+	    }
+	    
+	    while( !q.empty()){
+	        int node = q.front();
+	        q.pop();
+	        
+	        for( auto i : adj[node]){
+	            inDegree[i]--;
+	            if( inDegree[i] == 0){
+	                q.push(i);
+	            }
+	        }
+	        result.push_back(node);
+	        
+	    }
+	    
+        return result;
 	}
 };
 
