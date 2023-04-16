@@ -23,7 +23,7 @@ public:
         for( int i = index ; i < candidates.size() ; i++){
             
             if( i > index && candidates[i] == candidates[i-1]) continue;        // TO AVOID TAKING SAME ELEMENTS IN THE ANS AGAIN  
-            if( candidates[i] > target) break;          // OPTIMIZATION // IF ELEMENT IS GREATER THAN TARGET THEN ALL UPCOMING ELEMENTS ARE INVALID
+            if( target -candidates[i] < 0) break;          // OPTIMIZATION // IF ELEMENT IS GREATER THAN TARGET THEN ALL UPCOMING ELEMENTS ARE INVALID
             
             temp.push_back( candidates[i]);
             backtrack( candidates , target-candidates[i] , i+1 , temp , ans);   // to pick or not to pick
