@@ -32,7 +32,10 @@ public:
         
         vector<int> dp( nums.size() , -1);
         
-        // return recurse( dp , nums , nums.size()-1 );
+        // return recurse( dp , nums , nums.size()-1 );     // memorization
+        
+        
+        /*      // tabulation 
         
         // to make a tabulation from memorization we fill up the base case first in the dp 
         // then from the bottom case we fill up the table
@@ -51,5 +54,18 @@ public:
         }
         
         return dp[dp.size()-1];
+        
+        */ 
+        
+        // space optimization
+        
+        int prev1 = 0;
+        int prev2 = 0;
+        for (int num : nums) {
+            int tmp = prev1;
+            prev1 = max(prev2 + num, prev1);
+            prev2 = tmp;
+        }
+        return prev1;
     }
 };
