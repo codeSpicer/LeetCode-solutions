@@ -30,7 +30,7 @@ private:
 public:
     int rob(vector<int>& nums) {
         
-        vector<int> dp( nums.size() , -1);
+        // vector<int> dp( nums.size() , -1);
         
         // return recurse( dp , nums , nums.size()-1 );     // memorization
         
