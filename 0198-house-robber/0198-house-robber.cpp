@@ -32,7 +32,24 @@ public:
         
         vector<int> dp( nums.size() , -1);
         
-        return recurse( dp , nums , nums.size()-1 );
+        // return recurse( dp , nums , nums.size()-1 );
         
+        // to make a tabulation from memorization we fill up the base case first in the dp 
+        // then from the bottom case we fill up the table
+        
+        dp[0] = nums[0];
+        
+        for( int i = 1 ; i < nums.size() ; i++){
+            int take =  nums[i] ;
+            if( i > 1 ){
+                take += dp[i-2];    // if we are taking the cur element then the element 2 steps behind can also be taken
+            }
+            
+            int not_take = 0 + dp[i-1];
+            
+            dp[i] = max( take , not_take);
+        }
+        
+        return dp[dp.size()-1];
     }
 };
